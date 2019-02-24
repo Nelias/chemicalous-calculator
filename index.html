@@ -4,14 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/home.css">
     <title>Chemicalous Calculator</title>
+
+    <script type="text/javascript">
+        var proportionOfFirstSolution = 0;
+        var proportionOfSecondSolution = 0;
+
+        var calculateDensity = function() {
+            console.log("hello");
+            var first = document.getElementById("first-solution").value;
+            var second = document.getElementById("second-solution").value;
+            var wanted = document.getElementById("wanted-solution").value;
+            proportionOfFirstSolution = wanted - second;
+            proportionOfSecondSolution = first - wanted;
+    
+            var result = `${proportionOfFirstSolution} / ${proportionOfSecondSolution}`;
+            document.getElementById("result").value = result;
+        };
+
+        var calculateWantedVolume = function() {
+            var wantedVolume = document.getElementById("wanted-volume").value;
+            document.getElementById("result-volume-first").value = proportionOfFirstSolution * wantedVolume;
+            document.getElementById("result-volume-second").value = proportionOfSecondSolution * wantedVolume;
+        };
+    </script>
 </head>
 <body>
-    <header>Chemicalous Calculator</header>
-    <label for=""></label>
-    <input type="text">
-    <label for=""></label>
-    <input type="text">
+    <header class="col-md-12 text-center">
+        <h2>Chemicalous Calculator</h2>
+    </header>
+    <br>
+    <fieldset class="col-md-4 border border-warning rounded mx-auto">
+        <div class="col-md-6 mx-auto">
+            <label class="col text-center" for=""><strong>molar density of first solution</strong></label>
+            <input id="first-solution" class="col border rounded" type="number">
+        </div>
+        <br>
+        <div class="col-md-6 mx-auto">
+            <label class="col text-center" for=""><strong>molar density of second solution</strong> <br> if water = 0</label>
+            <input id="second-solution" class="col border rounded" type="number">
+        </div>
+        <br>
+        <div class="col-md-6 mx-auto">
+            <label class="col text-center" for=""><strong>wanted density of a solution</strong></label>
+            <input id="wanted-solution" class="col border rounded" type="number">
+        </div>
+        <br>
+        <br>
+        <div class="text-center">
+            <button  class="btn btn-dark col-md-6" onclick="calculateDensity();">Calculate proportion</button>
+        </div>
+        <br>
+        <br>
+
+        <div class="col-md-6 mx-auto">
+            <label class="col text-center" for=""><strong>result is a proportion</strong> <br><br> <i>if one is negative it means it is impossible to achieve such result by using those solutions, use water or pure ingredient instead</i></label>
+            <input id="result" class="col border rounded" style="color: green;" type="text">
+        </div>
+    </fieldset>
+
+    <br>
+
+    <fieldset class="col-md-4 border border-warning rounded mx-auto">
+        <div class="col-md-6 mx-auto">
+            <label class="col text-center" for=""><strong>wanted volume of a wanted solution</strong></label>
+            <input id="wanted-volume" class="col border rounded" type="number">
+        </div>
+        <br>
+        <br>
+        <div class="text-center">
+            <button  class="btn btn-dark col-md-6" onclick="calculateWantedVolume();">Calculate volumes</button>
+        </div>
+        <br>
+        <br>
+
+        <div class="col-md-6 mx-auto">
+            <label class="col text-center" for=""><strong>volume of first solution</strong></label>
+            <input id="result-volume-first" class="col border rounded" style="color: green;" type="text">
+        </div>
+        <br>
+        <div class="col-md-6 mx-auto">
+            <label class="col text-center" for=""><strong>volume of second solution</strong></label>
+            <input id="result-volume-second" class="col border rounded" style="color: green;" type="text">
+        </div>
+    </fieldset>
+
+
 </body>
 </html>

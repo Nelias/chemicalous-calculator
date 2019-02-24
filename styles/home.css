@@ -1,0 +1,15 @@
+body {
+    background: url("https://www.arl.army.mil/www/articles/3211/image.2.large.jpg");
+}
+
+header {
+    background: linear-gradient(90deg, #031241, #3b96b1, #031241);
+    color: white;
+}
+
+fieldset {
+    background: linear-gradient(90deg, #031241, #3b96b1, #031241);
+    color: white;
+    text-shadow: 1px 1px black;
+    padding: 20px;
+}
